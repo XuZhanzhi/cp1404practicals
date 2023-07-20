@@ -9,10 +9,10 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "G":
-            score = float(input("Enter score: "))
+            score = int(input("Enter score: "))
             while score < 0 or score > 100:
                 print("Invalid score")
-                score = float(input("Enter score: "))
+                score = int(input("Enter score: "))
         elif choice == "P":
             print(get_score_status(score))
         elif choice == "S":
