@@ -14,9 +14,12 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 0.01
 MAX_PRICE = 1000.0
 INITIAL_PRICE = 10.0
+OUTPUT_FILE = "output.txt"
+
+out_file = open(OUTPUT_FILE, 'w')
 
 price = INITIAL_PRICE
-print(f"${price:,.2f}")
+print(f"Starting price: ${price:,.2f}", file=out_file)
 
 while MIN_PRICE <= price <= MAX_PRICE:
     price_change = 0
@@ -33,3 +36,5 @@ while MIN_PRICE <= price <= MAX_PRICE:
 
     price *= (1 + price_change)
     print(f"${price:,.2f}")
+
+out_file.close()
