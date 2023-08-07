@@ -17,7 +17,7 @@ def main():
         for j in range(NUMBER_PER_LINE):
             number = random.randint(MINIMUM_NUMBER, MAXIMUM_NUMBER)
             while number in quick_pick_number:
-                number = number = random.randint(MINIMUM_NUMBER, MAXIMUM_NUMBER)
+                number = random.randint(MINIMUM_NUMBER, MAXIMUM_NUMBER)
             quick_pick_number.append(number)
         quick_pick_number.sort()
         print(" ".join(f"{number:2}" for number in quick_pick_number))
