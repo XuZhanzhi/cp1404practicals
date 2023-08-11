@@ -13,7 +13,7 @@ def get_records(filename):
     return records
 
 
-def process_data(data):
+def process_data(records):
     """This function is for creating dictionary of champions and set of countries"""
     champion_to_count = {}
     countries = set()
@@ -35,5 +35,11 @@ def display_results(champion_to_count, countries):
     print(", ".join(country for country in sorted(countries)))
 
 
+def main():
+    """Main function for read data file"""
+    records = get_records(FILENAME)
+    champion_to_count, countries = process_data(records)
+    display_results(champion_to_count, countries)
 
 
+main()
