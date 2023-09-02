@@ -22,7 +22,7 @@ def main():
         elif user_input == "S":
             save_file(projects)
         elif user_input == "D":
-            print()
+            display_projects(projects)
         elif user_input == "F":
             print()
         elif user_input == "A":
@@ -65,6 +65,25 @@ def save_file(projects):
               f"{project.cost_estimate}\t{project.completion_percentage}", file=outfile)
     outfile.close()
     print(f"Data saved to {file_name}")
+
+
+def display_projects(projects):
+    """This function is for displaying two groups projects:incomplete projects and completed projects."""
+    complete_projects = []
+    incomplete_projects = []
+    for project in projects:
+        if project.completion_percentage == 100:
+            complete_projects.append(project)
+        else:
+            incomplete_projects.append(project)
+    complete_projects.sort()
+    incomplete_projects.sort()
+    print("Incomplete Projects:")
+    for project in incomplete_projects:
+        print(project)
+    print("Compete Projects:")
+    for project in complete_projects:
+        print(project)
 
 
 main()
