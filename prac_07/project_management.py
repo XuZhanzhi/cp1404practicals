@@ -1,4 +1,5 @@
 from prac_07.project import Project
+import datetime
 
 FILENAME = "projects.txt"
 MENU = "\
@@ -24,7 +25,7 @@ def main():
         elif user_input == "D":
             display_projects(projects)
         elif user_input == "F":
-            print()
+            filter_projects(projects)
         elif user_input == "A":
             print()
         elif user_input == "U":
@@ -84,6 +85,23 @@ def display_projects(projects):
     print("Compete Projects:")
     for project in complete_projects:
         print(project)
+
+
+def filter_projects(projects):
+    """This function is for filtering projects by date"""
+    is_completed = False
+    while not is_completed:
+        try:
+            filter_date_string = input("Show Projects that start after date (dd/mm/yyyy): ")
+            filter_date = datetime.datetime.strptime(filter_date_string, "%d/%m/%Y").date()
+            is_completed = True
+        except ValueError:
+            print("Invalid date try again")
+    for project in projects:
+        date_string = project.start_date
+        date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        if date >= filter_date:
+            print(project)
 
 
 main()
