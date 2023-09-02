@@ -27,7 +27,7 @@ def main():
         elif user_input == "F":
             filter_projects(projects)
         elif user_input == "A":
-            print()
+            add_project(projects)
         elif user_input == "U":
             print()
         else:
@@ -102,6 +102,48 @@ def filter_projects(projects):
         date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
         if date >= filter_date:
             print(project)
+
+
+def add_project(projects):
+    """This function is for adding a new project."""
+    print("Let's add a new project")
+    # get name
+    name = input("Name: ")
+    is_finished = True
+    while is_finished:
+        # get start date
+        try:
+            date_string = input("Start date (dd/mm/yy): ")
+            start_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            is_finished = False
+        except ValueError:
+            print("Invalid Start date (dd/mm/yyyy)")
+    while not is_finished:
+        # get priority
+        try:
+            priority = int(input("Priority: "))
+            is_finished = True
+        except ValueError:
+            print("Invalid priority please enter a priority number")
+    while is_finished:
+        # get cost
+        try:
+            cost_estimate = float(input("Cost Estimate: $"))
+            is_finished = False
+        except ValueError:
+            print("Invalid cost, please enter valid cost number")
+    while not is_finished:
+        # get completion percentage
+        try:
+            completion_percentage = int(input("Percent Compete: "))
+            if completion_percentage > 100:
+                print("invalid percentage")
+            else:
+                is_finished = True
+        except ValueError:
+            print("Invalid percentage, please enter valid percentage")
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
 
 
 main()
