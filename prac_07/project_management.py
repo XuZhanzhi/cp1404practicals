@@ -20,7 +20,7 @@ def main():
         if user_input == "L":
             load_file(projects)
         elif user_input == "S":
-            print()
+            save_file(projects)
         elif user_input == "D":
             print()
         elif user_input == "F":
@@ -37,7 +37,7 @@ def main():
 
 
 def load_file(projects):
-    """This function is for loading file"""
+    """This function is for loading file."""
     file_name = input("File Name:\n>>>")
     try:
         infile = open(file_name, 'r')
@@ -52,3 +52,19 @@ def load_file(projects):
         projects.append(project)
     infile.close()
     print(f"Data loaded from {file_name}")
+
+
+def save_file(projects):
+    """This function is for saving projects to the file."""
+    file_name = input("File Name:\n>>>")
+    outfile = open(file_name, 'w')
+    print(f"Name\tStart Data\tPriority\t"
+          f"Cost Estimate\tCompletion Percentage", file=outfile)
+    for project in projects:
+        print(f"{project.name}\t{project.start_data}\t{project.priority}\t"
+              f"{project.cost_estimate}\t{project.completion_percentage}", file=outfile)
+    outfile.close()
+    print(f"Data saved to {file_name}")
+
+
+main()
