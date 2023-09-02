@@ -29,7 +29,7 @@ def main():
         elif user_input == "A":
             add_project(projects)
         elif user_input == "U":
-            print()
+            update_project(projects)
         else:
             print("Invalid Menu Choice")
         print(MENU)
@@ -144,6 +144,32 @@ def add_project(projects):
             print("Invalid percentage, please enter valid percentage")
     project = Project(name, start_date, priority, cost_estimate, completion_percentage)
     projects.append(project)
+
+
+def update_project(projects):
+    """This function is for updating the project."""
+    # List the projects.
+    for i, project in enumerate(projects):
+        print(i, project)
+        project_number = i
+    # Chose which project to update.
+    is_finished = False
+    while not is_finished:
+        try:
+            project_choice = int(input("Project Choice:"))
+            if project_choice > project_number:
+                print("invalid choice.")
+            else:
+                is_finished = True
+        except ValueError:
+            print("invalid number, Please enter right project number.")
+
+    for i, project in enumerate(projects):
+        if project_choice == i:
+            print(project)
+            project.completion_percentage = int(input("New Percentage:"))
+            project.priority = int(input("New Priority:"))
+            print(f"{project.name} has been updated")
 
 
 main()
