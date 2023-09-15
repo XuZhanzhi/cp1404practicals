@@ -12,8 +12,8 @@ class Band:
 
     def play(self):
         for musician in self.musicians:
-            if not vars(musician)['instruments']:
-                print(f"{vars(musician)['name']} needs an instrument!")
+            if not musician.instruments:
+                print(f"{musician.name} needs an instrument!")
             else:
-                print(f"{vars(musician)['name']} is playing: {vars(musician)['instruments'][0]}")
-        return ""
+                print(f"{musician.name} is playing: {musician.instruments[0]}")
+
